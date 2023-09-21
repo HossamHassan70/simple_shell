@@ -66,29 +66,32 @@ char *which(char *filename, general_t *info)
 	int size;
 
 	(void) info;
+
 	path = _getenv("PATH");
 	if (path == NULL)
 		return (NULL);
 
-	size = snprintf(NULL, 0, "/%s", filename) + 1;
-	slash = malloc(size * sizeof(char));
-	snprintf(slash, size, "/%s", filename);
-
 	token = strtok(path, ":");
+
+	size = _strlen(filename) + 2;
+	slash = malloc(size * sizeof(char));
+	slash = _strcpy(slash, "/");
+	slash = _strcat(slash, filename);
+
 	while (token != NULL)
 	{
-		size = snprintf(NULL, 0, "%s/%s", token, filename) + 1;
-		tmp_path = malloc(size * sizeof(char));
-		snprintf(tmp_path, size, "%s/%s", token, filename);
+		tmp_path = malloc(_strlen(token) + size);
+		tmp_path = _strcpy(tmp_path, token);
+		tmp_path = _strcat(tmp_path, slash);
 
 		if (is_executable(tmp_path) == PERMISSIONS)
 		{
 			free(slash);
 			free(path);
-
 			return (tmp_path);
 		}
 		token = strtok(NULL, ":");
+
 		free(tmp_path);
 	}
 
