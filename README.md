@@ -6,4 +6,4 @@
 - The C shell, csh, was modeled on the C programming language, including the control structures and the expression grammar.
 - The C shell also introduced many features for interactive work, including the history and editing mechanisms, aliases,
     directory stacks, tilde notation, cdpath, job control and path hashing.
-- Although the interactive features of csh have been copied to most other shells, the language structure has not been widely. 
+- Although the interactive features of csh have been copied to most other shells, the language structure has not been widely copied. 
