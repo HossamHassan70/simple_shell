@@ -64,6 +64,7 @@ void start_prompt(general_t *info)
 		if (buff == NULL)
 		{
 			print(info->mode == INTERACTIVE ? "exit\n" : "");
+			free(path);
 			break;
 		}
 
